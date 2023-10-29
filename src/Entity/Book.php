@@ -46,10 +46,10 @@ class Book
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $thumbnail = null;
 
-    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books')]
+    #[ORM\ManyToMany(targetEntity: Author::class, inversedBy: 'books', cascade: ['all'])]
     private Collection $authors;
 
-    #[ORM\ManyToMany(targetEntity: Publisher::class, inversedBy: 'books')]
+    #[ORM\ManyToMany(targetEntity: Publisher::class, inversedBy: 'books', cascade: ['all'])]
     private Collection $publishers;
 
     #[ORM\OneToMany(mappedBy: 'book', targetEntity: UserBook::class)]
